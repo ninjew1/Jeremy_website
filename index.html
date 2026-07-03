@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jeremy Creasey — Art, Prints & Portraits</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Noto+Sans+JP:wght@300;400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --ink:#1a1410;
+  --ink-soft:#3d2e22;
+  --paper:#faf7f2;
+  --paper-warm:#f5f0e8;
+  --red:#c0392b;
+  --red-dark:#922b21;
+  --gold:#b8860b;
+  --muted:#7a6e64;
+  --border:#d4c8b8;
+  --accent-line:#e8ddd0;
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  font-family:'Noto Sans JP',sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  font-weight:300;
+  line-height:1.7;
+}
+
+/* ── Nav ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(250,247,242,0.95);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);
+  padding:0 5vw;
+  display:flex;align-items:center;justify-content:space-between;
+  height:64px;
+}
+.nav-logo{
+  font-family:'Noto Serif JP',serif;
+  font-size:15px;font-weight:400;letter-spacing:0.2em;
+  color:var(--ink);text-decoration:none;
+}
+.nav-logo span{
+  display:block;font-size:9px;letter-spacing:0.4em;
+  color:var(--muted);font-family:'Noto Sans JP',sans-serif;
+  font-weight:300;text-transform:uppercase;margin-top:2px;
+}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{
+  font-size:11px;letter-spacing:0.25em;text-transform:uppercase;
+  text-decoration:none;color:var(--muted);
+  transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{
+  background:var(--ink);color:var(--paper);
+  font-size:10px;letter-spacing:0.3em;text-transform:uppercase;
+  padding:10px 20px;border:none;cursor:pointer;
+  text-decoration:none;font-family:'Noto Sans JP',sans-serif;
+  transition:background 0.2s;
+}
+.nav-cta:hover{background:var(--red)}
+
+/* ── Hero ── */
+.hero{
+  min-height:100vh;
+  display:grid;grid-template-columns:1fr 1fr;
+  padding-top:64px;
+  position:relative;overflow:hidden;
+}
+.hero-left{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:6vw 5vw 6vw 8vw;
+  position:relative;z-index:2;
+}
+.hero-kamon{
+  font-size:10px;letter-spacing:0.4em;text-transform:uppercase;
+  color:var(--red);margin-bottom:24px;
+  display:flex;align-items:center;gap:12px;
+}
+.hero-kamon::before{
+  content:'';width:32px;height:1px;background:var(--red);
+}
+.hero-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(48px,7vw,88px);
+  font-weight:300;line-height:1.05;
+  color:var(--ink);letter-spacing:-0.01em;
+}
+.hero-name em{
+  font-style:italic;color:var(--red);
+}
+.hero-tagline{
+  font-family:'Noto Serif JP',serif;
+  font-size:13px;letter-spacing:0.15em;
+  color:var(--muted);margin-top:20px;line-height:1.8;
+}
+.hero-jp{
+  font-family:'Noto Serif JP',serif;
+  font-size:22px;letter-spacing:0.3em;
+  color:var(--ink-soft);opacity:0.35;
+  margin-top:8px;
+}
+.hero-actions{
+  display:flex;gap:16px;margin-top:48px;align-items:center;
+}
+.btn-primary{
+  background:var(--ink);color:var(--paper);
+  font-size:10px;letter-spacing:0.3em;text-transform:uppercase;
+  padding:14px 32px;border:none;cursor:pointer;
+  text-decoration:none;font-family:'Noto Sans JP',sans-serif;
+  transition:background 0.2s;display:inline-block;
+}
+.btn-primary:hover{background:var(--red)}
+.btn-ghost{
+  font-size:10px;letter-spacing:0.3em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;
+  border-bottom:1px solid var(--border);padding-bottom:2px;
+  transition:color 0.2s,border-color 0.2s;
+}
+.btn-ghost:hover{color:var(--ink);border-color:var(--ink)}
+
+.hero-right{
+  position:relative;overflow:hidden;
+  background:var(--paper-warm);
+}
+.hero-artwork{
+  width:100%;height:100%;object-fit:cover;
+  display:block;filter:sepia(8%);
+}
+.hero-artwork-placeholder{
+  width:100%;height:100%;
+  background:linear-gradient(160deg,#e8ddd0 0%,#d4c8b8 50%,#c8bfb0 100%);
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:20px;
+}
+.hero-seal{
+  width:120px;height:120px;
+  border:2px solid var(--red);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;
+  font-family:'Noto Serif JP',serif;
+  color:var(--red);opacity:0.6;
+}
+.hero-seal .seal-jp{font-size:28px;letter-spacing:0.1em}
+.hero-seal .seal-en{font-size:8px;letter-spacing:0.4em;text-transform:uppercase;margin-top:4px}
+.hero-brushstroke{
+  position:absolute;bottom:0;left:0;right:0;height:4px;
+  background:var(--red);opacity:0.7;
+}
+
+/* ── Decorative divider ── */
+.divider{
+  display:flex;align-items:center;gap:20px;
+  padding:48px 8vw;
+}
+.divider-line{flex:1;height:1px;background:var(--border)}
+.divider-mark{
+  font-family:'Noto Serif JP',serif;
+  font-size:18px;letter-spacing:0.4em;color:var(--muted);opacity:0.5;
+}
+
+/* ── Section label ── */
+.section-label{
+  font-size:9px;letter-spacing:0.5em;text-transform:uppercase;
+  color:var(--red);margin-bottom:16px;
+  display:flex;align-items:center;gap:12px;
+}
+.section-label::before{content:'';width:24px;height:1px;background:var(--red)}
+
+/* ── About ── */
+.about{
+  padding:80px 8vw;
+  display:grid;grid-template-columns:1fr 2fr;gap:80px;
+  align-items:start;
+}
+.about-aside{
+  position:sticky;top:96px;
+}
+.about-jp-vert{
+  font-family:'Noto Serif JP',serif;
+  writing-mode:vertical-rl;text-orientation:mixed;
+  font-size:32px;letter-spacing:0.3em;
+  color:var(--ink);opacity:0.1;
+  line-height:1;margin-bottom:32px;
+}
+.about-artist-mark{
+  width:64px;height:2px;background:var(--red);margin-bottom:24px;
+}
+.about-name-jp{
+  font-family:'Noto Serif JP',serif;
+  font-size:13px;letter-spacing:0.3em;color:var(--muted);
+}
+.about-main h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(28px,4vw,48px);font-weight:300;
+  line-height:1.2;color:var(--ink);margin-bottom:28px;
+}
+.about-main h2 em{font-style:italic;color:var(--red)}
+.about-body{
+  font-size:15px;color:var(--ink-soft);line-height:1.9;
+  max-width:560px;
+}
+.about-body p+p{margin-top:18px}
+.about-stats{
+  display:flex;gap:40px;margin-top:40px;
+  padding-top:40px;border-top:1px solid var(--border);
+}
+.stat-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:36px;font-weight:300;color:var(--ink);line-height:1;
+}
+.stat-label{
+  font-size:10px;letter-spacing:0.3em;text-transform:uppercase;
+  color:var(--muted);margin-top:6px;
+}
+
+/* ── Shop / gallery ── */
+.shop{
+  padding:80px 5vw;
+  background:var(--paper-warm);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+.shop-header{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  margin-bottom:48px;padding:0 3vw;
+}
+.shop-header h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(28px,4vw,48px);font-weight:300;
+}
+.shop-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:2px;
+}
+.product-card{
+  background:var(--paper);
+  position:relative;overflow:hidden;
+  cursor:pointer;
+  group:true;
+}
+.product-image{
+  aspect-ratio:3/4;
+  background:var(--paper-warm);
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.product-image-inner{
+  width:100%;height:100%;
+  transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.product-card:hover .product-image-inner{transform:scale(1.04)}
+.product-placeholder{
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:12px;
+}
+.product-badge{
+  position:absolute;top:16px;left:16px;
+  background:var(--red);color:var(--paper);
+  font-size:9px;letter-spacing:0.3em;text-transform:uppercase;
+  padding:4px 10px;
+}
+.product-info{
+  padding:20px 20px 24px;
+  border-top:1px solid var(--border);
+}
+.product-category{
+  font-size:9px;letter-spacing:0.4em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:8px;
+}
+.product-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;font-weight:400;color:var(--ink);
+  line-height:1.2;margin-bottom:4px;
+}
+.product-subtitle{
+  font-size:11px;color:var(--muted);margin-bottom:16px;
+  letter-spacing:0.05em;
+}
+.product-footer{
+  display:flex;align-items:center;justify-content:space-between;
+}
+.product-price{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:400;color:var(--ink);
+}
+.product-price span{font-size:12px;color:var(--muted);font-family:'Noto Sans JP',sans-serif}
+.add-btn{
+  font-size:9px;letter-spacing:0.3em;text-transform:uppercase;
+  background:none;border:1px solid var(--border);
+  color:var(--muted);padding:8px 16px;cursor:pointer;
+  transition:all 0.2s;font-family:'Noto Sans JP',sans-serif;
+}
+.add-btn:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+/* art placeholder patterns */
+.art-1{background:repeating-linear-gradient(45deg,#e8ddd0,#e8ddd0 2px,#d4c8b8 2px,#d4c8b8 12px)}
+.art-2{background:repeating-linear-gradient(-45deg,#ddd4c8,#ddd4c8 1px,#e8ddd0 1px,#e8ddd0 10px)}
+.art-3{background:radial-gradient(circle at 30% 70%,#c8bfb0 0%,#e8ddd0 60%,#d4c8b8 100%)}
+.art-4{background:repeating-linear-gradient(0deg,#e0d8cc,#e0d8cc 3px,#ede6da 3px,#ede6da 18px)}
+.art-5{background:conic-gradient(from 45deg at 60% 40%,#d4c8b8,#e8ddd0,#c8bfb0,#ddd4c8,#d4c8b8)}
+.art-6{background:repeating-radial-gradient(circle at 50% 50%,#e8ddd0,#e8ddd0 4px,#d4c8b8 4px,#d4c8b8 16px)}
+
+/* ── Portraits section ── */
+.portraits{
+  padding:80px 8vw;
+  display:grid;grid-template-columns:2fr 1fr;gap:80px;
+  align-items:center;
+}
+.portraits-text h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(28px,4vw,48px);font-weight:300;line-height:1.2;
+  margin-bottom:24px;
+}
+.portraits-text h2 em{font-style:italic;color:var(--red)}
+.portraits-text p{
+  font-size:15px;color:var(--ink-soft);line-height:1.9;
+  max-width:480px;margin-bottom:16px;
+}
+.portraits-steps{
+  margin:32px 0;list-style:none;
+  display:flex;flex-direction:column;gap:0;
+}
+.portraits-steps li{
+  display:flex;align-items:flex-start;gap:20px;
+  padding:20px 0;border-bottom:1px solid var(--border);
+}
+.portraits-steps li:first-child{border-top:1px solid var(--border)}
+.step-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:28px;font-weight:300;color:var(--red);opacity:0.5;
+  line-height:1;flex-shrink:0;width:28px;
+}
+.step-content h4{
+  font-size:12px;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--ink);margin-bottom:4px;font-weight:400;
+}
+.step-content p{font-size:13px;color:var(--muted);line-height:1.6}
+.portraits-aside{
+  display:flex;flex-direction:column;gap:2px;
+}
+.portrait-preview{
+  aspect-ratio:4/5;
+  background:var(--paper-warm);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+}
+.portrait-preview-sm{
+  aspect-ratio:3/2;
+  background:var(--paper-warm);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+}
+.portrait-icon{
+  font-family:'Noto Serif JP',serif;
+  font-size:36px;color:var(--ink);opacity:0.15;
+}
+
+/* ── Process / philosophy ── */
+.philosophy{
+  background:var(--ink);color:var(--paper);
+  padding:80px 8vw;
+  display:grid;grid-template-columns:1fr 1fr;gap:80px;
+  align-items:center;
+}
+.philosophy-quote{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(24px,3.5vw,42px);
+  font-weight:300;font-style:italic;
+  line-height:1.3;color:var(--paper);
+}
+.philosophy-quote::before{
+  content:'\201C';font-size:80px;line-height:0;
+  vertical-align:-0.3em;color:var(--red);
+  font-family:'Cormorant Garamond',serif;
+  display:block;margin-bottom:16px;
+}
+.philosophy-jp{
+  font-family:'Noto Serif JP',serif;
+  font-size:40px;letter-spacing:0.4em;
+  color:var(--paper);opacity:0.1;
+  writing-mode:vertical-rl;
+  position:absolute;right:0;top:50%;
+  transform:translateY(-50%);
+}
+.philosophy-right{position:relative;overflow:hidden}
+.philosophy-right h3{
+  font-size:11px;letter-spacing:0.4em;text-transform:uppercase;
+  color:var(--red);margin-bottom:24px;
+}
+.philosophy-pillars{display:flex;flex-direction:column;gap:28px}
+.pillar-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;font-weight:400;color:var(--paper);
+  margin-bottom:6px;
+  display:flex;align-items:center;gap:12px;
+}
+.pillar-title::before{
+  content:'';width:20px;height:1px;background:var(--red);flex-shrink:0;
+}
+.pillar-body{
+  font-size:13px;color:rgba(250,247,242,0.55);line-height:1.7;
+  padding-left:32px;
+}
+
+/* ── Print types banner ── */
+.print-types{
+  padding:60px 8vw;
+  border-bottom:1px solid var(--border);
+}
+.print-types h3{
+  font-size:11px;letter-spacing:0.4em;text-transform:uppercase;
+  color:var(--muted);text-align:center;margin-bottom:40px;
+}
+.print-type-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:var(--border);
+}
+.print-type{
+  background:var(--paper);
+  padding:32px 24px;
+  text-align:center;
+}
+.print-type-icon{
+  font-family:'Noto Serif JP',serif;
+  font-size:28px;color:var(--ink);opacity:0.2;
+  margin-bottom:16px;display:block;
+}
+.print-type-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:18px;color:var(--ink);margin-bottom:6px;
+}
+.print-type-desc{
+  font-size:11px;color:var(--muted);line-height:1.6;letter-spacing:0.03em;
+}
+
+/* ── Commission CTA ── */
+.commission-cta{
+  padding:80px 8vw;
+  display:grid;grid-template-columns:1fr 1fr;gap:80px;
+  align-items:center;
+  border-bottom:1px solid var(--border);
+}
+.commission-cta h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(28px,4vw,52px);font-weight:300;line-height:1.15;
+}
+.commission-cta h2 em{font-style:italic;color:var(--red)}
+.commission-cta p{
+  font-size:14px;color:var(--muted);line-height:1.8;
+  margin:20px 0 32px;max-width:380px;
+}
+.commission-form{display:flex;flex-direction:column;gap:16px}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-label{
+  font-size:9px;letter-spacing:0.4em;text-transform:uppercase;color:var(--muted);
+}
+.form-input{
+  border:1px solid var(--border);background:var(--paper-warm);
+  padding:12px 14px;font-family:'Noto Sans JP',sans-serif;
+  font-size:13px;color:var(--ink);font-weight:300;
+  outline:none;transition:border-color 0.2s;
+  border-radius:0;-webkit-appearance:none;
+}
+.form-input:focus{border-color:var(--ink)}
+.form-select{
+  border:1px solid var(--border);background:var(--paper-warm);
+  padding:12px 14px;font-family:'Noto Sans JP',sans-serif;
+  font-size:13px;color:var(--ink);font-weight:300;
+  outline:none;cursor:pointer;border-radius:0;-webkit-appearance:none;
+}
+.form-textarea{
+  border:1px solid var(--border);background:var(--paper-warm);
+  padding:12px 14px;font-family:'Noto Sans JP',sans-serif;
+  font-size:13px;color:var(--ink);font-weight:300;
+  outline:none;resize:vertical;min-height:100px;
+  border-radius:0;
+}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-submit{
+  background:var(--ink);color:var(--paper);
+  font-size:10px;letter-spacing:0.3em;text-transform:uppercase;
+  padding:16px 32px;border:none;cursor:pointer;
+  font-family:'Noto Sans JP',sans-serif;
+  transition:background 0.2s;align-self:flex-start;
+  margin-top:8px;
+}
+.form-submit:hover{background:var(--red)}
+.form-note{
+  font-size:11px;color:var(--muted);line-height:1.6;
+  margin-top:4px;
+}
+
+/* ── Footer ── */
+footer{
+  background:var(--ink);color:var(--paper);
+  padding:60px 8vw 40px;
+}
+.footer-top{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:60px;padding-bottom:48px;
+  border-bottom:1px solid rgba(250,247,242,0.1);
+  margin-bottom:32px;
+}
+.footer-brand .footer-name{
+  font-family:'Noto Serif JP',serif;
+  font-size:18px;letter-spacing:0.2em;color:var(--paper);
+  margin-bottom:8px;
+}
+.footer-brand .footer-tagline{
+  font-size:11px;letter-spacing:0.2em;
+  color:rgba(250,247,242,0.4);line-height:1.7;
+  max-width:220px;
+}
+.footer-brand .footer-seal{
+  margin-top:24px;
+  font-family:'Noto Serif JP',serif;
+  font-size:20px;color:var(--red);opacity:0.6;
+  letter-spacing:0.3em;
+}
+.footer-col h4{
+  font-size:9px;letter-spacing:0.4em;text-transform:uppercase;
+  color:rgba(250,247,242,0.4);margin-bottom:16px;
+}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-col ul a{
+  font-size:12px;color:rgba(250,247,242,0.6);text-decoration:none;
+  letter-spacing:0.05em;transition:color 0.2s;
+}
+.footer-col ul a:hover{color:var(--paper)}
+.footer-bottom{
+  display:flex;align-items:center;justify-content:space-between;
+}
+.footer-copy{
+  font-size:11px;color:rgba(250,247,242,0.3);letter-spacing:0.1em;
+}
+.footer-jp{
+  font-family:'Noto Serif JP',serif;
+  font-size:13px;color:rgba(250,247,242,0.15);letter-spacing:0.4em;
+}
+
+/* ── Vertical text accent ── */
+.vert-text{
+  position:absolute;right:24px;top:50%;transform:translateY(-50%);
+  font-family:'Noto Serif JP',serif;
+  writing-mode:vertical-rl;text-orientation:mixed;
+  font-size:11px;letter-spacing:0.3em;
+  color:var(--red);opacity:0.5;
+}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr}
+  .hero-right{height:50vw}
+  .about{grid-template-columns:1fr;gap:40px}
+  .about-aside{position:static}
+  .portraits{grid-template-columns:1fr;gap:40px}
+  .philosophy{grid-template-columns:1fr;gap:40px}
+  .print-type-grid{grid-template-columns:repeat(2,1fr)}
+  .commission-cta{grid-template-columns:1fr;gap:40px}
+  .footer-top{grid-template-columns:1fr 1fr;gap:40px}
+  .nav-links{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <a href="#" class="nav-logo">
+    Jeremy Creasey
+    <span>Art · Prints · Portraits</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#shop">Shop</a></li>
+    <li><a href="#portraits">Portraits</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#commission">Commission</a></li>
+  </ul>
+  <a href="#commission" class="nav-cta">Commission a piece</a>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-kamon">Original artwork</div>
+    <h1 class="hero-name">
+      Jeremy<br><em>Creasey</em>
+    </h1>
+    <p class="hero-tagline">
+      Fine art prints, original works &amp; bespoke portraits<br>
+      rooted in the quiet discipline of Japanese aesthetics
+    </p>
+    <p class="hero-jp">芸術家</p>
+    <div class="hero-actions">
+      <a href="#shop" class="btn-primary">Explore the shop</a>
+      <a href="#about" class="btn-ghost">About the artist</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-artwork-placeholder art-3" style="width:100%;height:100%;position:relative">
+      <div class="hero-seal">
+        <div class="seal-jp">墨</div>
+        <div class="seal-en">Ink</div>
+      </div>
+      <div class="vert-text">Jeremy Creasey · 芸術</div>
+    </div>
+    <div class="hero-brushstroke"></div>
+  </div>
+</section>
+
+<!-- Print types banner -->
+<div class="print-types">
+  <h3>Available works</h3>
+  <div class="print-type-grid">
+    <div class="print-type">
+      <span class="print-type-icon">墨</span>
+      <div class="print-type-name">Ink originals</div>
+      <div class="print-type-desc">Unique works in sumi ink on washi paper</div>
+    </div>
+    <div class="print-type">
+      <span class="print-type-icon">版</span>
+      <div class="print-type-name">Fine art prints</div>
+      <div class="print-type-desc">Giclée editions, signed and numbered</div>
+    </div>
+    <div class="print-type">
+      <span class="print-type-icon">肖</span>
+      <div class="print-type-name">Portraits</div>
+      <div class="print-type-desc">Bespoke commissions from reference photos</div>
+    </div>
+    <div class="print-type">
+      <span class="print-type-icon">絵</span>
+      <div class="print-type-name">Custom works</div>
+      <div class="print-type-desc">Original pieces to your brief and palette</div>
+    </div>
+  </div>
+</div>
+
+<!-- Divider -->
+<div class="divider">
+  <div class="divider-line"></div>
+  <div class="divider-mark">◆</div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- Shop -->
+<section class="shop" id="shop">
+  <div class="shop-header">
+    <div>
+      <div class="section-label">Shop</div>
+      <h2>Selected works</h2>
+    </div>
+    <a href="#" class="btn-ghost">View all pieces</a>
+  </div>
+  <div class="shop-grid">
+
+    <div class="product-card">
+      <div class="product-image">
+        <div class="product-image-inner art-1 product-placeholder">
+          <span style="font-family:'Noto Serif JP',serif;font-size:36px;color:var(--ink);opacity:0.15">山</span>
+        </div>
+        <div class="product-badge">Original</div>
+      </div>
+      <div class="product-info">
+        <div class="product-category">Ink on washi</div>
+        <div class="product-title">Mountain at First Light</div>
+        <div class="product-subtitle">Sumi-e · 38 × 52 cm</div>
+        <div class="product-footer">
+          <div class="product-price">£480 <span>GBP</span></div>
+          <button class="add-btn">Enquire</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-image">
+        <div class="product-image-inner art-2 product-placeholder">
+          <span style="font-family:'Noto Serif JP',serif;font-size:36px;color:var(--ink);opacity:0.15">波</span>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-category">Giclée print · Edition of 50</div>
+        <div class="product-title">Tide Study No. 3</div>
+        <div class="product-subtitle">A3 · Signed &amp; numbered</div>
+        <div class="product-footer">
+          <div class="product-price">£95 <span>GBP</span></div>
+          <button class="add-btn">Add to cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-image">
+        <div class="product-image-inner art-5 product-placeholder">
+          <span style="font-family:'Noto Serif JP',serif;font-size:36px;color:var(--ink);opacity:0.15">花</span>
+        </div>
+        <div class="product-badge">New</div>
+      </div>
+      <div class="product-info">
+        <div class="product-category">Giclée print · Edition of 30</div>
+        <div class="product-title">Blossom &amp; Branch</div>
+        <div class="product-subtitle">A2 · Signed &amp; numbered</div>
+        <div class="product-footer">
+          <div class="product-price">£145 <span>GBP</span></div>
+          <button class="add-btn">Add to cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-image">
+        <div class="product-image-inner art-4 product-placeholder">
+          <span style="font-family:'Noto Serif JP',serif;font-size:36px;color:var(--ink);opacity:0.15">鳥</span>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-category">Ink on washi</div>
+        <div class="product-title">Crane in Mist</div>
+        <div class="product-subtitle">Sumi-e · 30 × 40 cm</div>
+        <div class="product-footer">
+          <div class="product-price">£360 <span>GBP</span></div>
+          <button class="add-btn">Enquire</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-image">
+        <div class="product-image-inner art-6 product-placeholder">
+          <span style="font-family:'Noto Serif JP',serif;font-size:36px;color:var(--ink);opacity:0.15">竹</span>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-category">Giclée print · Edition of 50</div>
+        <div class="product-title">Bamboo Grove</div>
+        <div class="product-subtitle">A3 · Signed &amp; numbered</div>
+        <div class="product-footer">
+          <div class="product-price">£85 <span>GBP</span></div>
+          <button class="add-btn">Add to cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-image">
+        <div class="product-image-inner art-3 product-placeholder">
+          <span style="font-family:'Noto Serif JP',serif;font-size:36px;color:var(--ink);opacity:0.15">月</span>
+        </div>
+        <div class="product-badge" style="background:var(--gold)">Sold</div>
+      </div>
+      <div class="product-info">
+        <div class="product-category">Ink on washi</div>
+        <div class="product-title">Autumn Moon</div>
+        <div class="product-subtitle">Sumi-e · 45 × 60 cm</div>
+        <div class="product-footer">
+          <div class="product-price" style="color:var(--muted)">£620 <span>GBP</span></div>
+          <button class="add-btn" style="opacity:0.4;cursor:not-allowed">Sold</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- About -->
+<section class="about" id="about">
+  <div class="about-aside">
+    <div class="about-jp-vert">芸術家の道</div>
+    <div class="about-artist-mark"></div>
+    <div class="section-label">The artist</div>
+    <div class="about-name-jp">ジェレミー・クリーシー</div>
+  </div>
+  <div class="about-main">
+    <h2>Drawn to the <em>essential</em>,<br>not the elaborate</h2>
+    <div class="about-body">
+      <p>Jeremy Creasey is a British artist whose practice is shaped by years of immersion in Japanese aesthetics — the philosophy of <em>ma</em> (negative space), the imperfect beauty of <em>wabi-sabi</em>, and the meditative discipline of sumi-e ink work.</p>
+      <p>Working primarily in sumi ink on handmade washi paper, Jeremy's originals carry the quiet authority of works that resist rush. Each brushstroke is deliberate and irreversible — there is no undo. Prints are produced as limited giclée editions on archival papers, faithful to the texture and tone of the originals.</p>
+      <p>Portrait commissions are a central part of Jeremy's practice. Whether capturing a person, a beloved animal, or a meaningful place, the approach remains the same: careful observation, generous listening, and a final work that feels both true and timeless.</p>
+    </div>
+    <div class="about-stats">
+      <div>
+        <div class="stat-num">15+</div>
+        <div class="stat-label">Years practising</div>
+      </div>
+      <div>
+        <div class="stat-num">340+</div>
+        <div class="stat-label">Commissions completed</div>
+      </div>
+      <div>
+        <div class="stat-num">18</div>
+        <div class="stat-label">Countries reached</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Divider -->
+<div class="divider">
+  <div class="divider-line"></div>
+  <div class="divider-mark">◆</div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- Portraits -->
+<section class="portraits" id="portraits">
+  <div class="portraits-text">
+    <div class="section-label">Portrait commissions</div>
+    <h2>A portrait is a <em>conversation</em><br>with time</h2>
+    <p>Every portrait commission begins with listening. Jeremy works closely with each client to understand not just what a subject looks like, but what a piece should feel like when it's lived with — on a wall, for decades.</p>
+    <p>From intimate ink studies to large-format giclée portraits, each piece is produced with the same unhurried attention. Commissions are accepted for people, animals, and places.</p>
+    <ul class="portraits-steps">
+      <li>
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <h4>Consultation</h4>
+          <p>A free call to discuss the subject, format, style, and your intentions for the piece.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <h4>Reference &amp; brief</h4>
+          <p>You share photos and any notes. Jeremy proposes a composition and confirms the quote.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <h4>Creation</h4>
+          <p>Jeremy works — typically 3–6 weeks — with progress updates at key stages.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">04</div>
+        <div class="step-content">
+          <h4>Delivery</h4>
+          <p>Carefully packaged and shipped worldwide, with certificate of authenticity.</p>
+        </div>
+      </li>
+    </ul>
+    <a href="#commission" class="btn-primary">Start a commission</a>
+  </div>
+  <div class="portraits-aside">
+    <div class="portrait-preview art-2">
+      <div class="portrait-icon">肖像</div>
+    </div>
+    <div style="height:2px"></div>
+    <div class="portrait-preview-sm art-5">
+      <div class="portrait-icon" style="font-size:20px">動物</div>
+    </div>
+  </div>
+</section>
+
+<!-- Philosophy -->
+<section class="philosophy">
+  <div>
+    <div class="philosophy-quote">
+      The brush does not hesitate.<br>Neither should the eye that guides it.
+    </div>
+  </div>
+  <div class="philosophy-right">
+    <h3>The practice</h3>
+    <div class="philosophy-pillars">
+      <div>
+        <div class="pillar-title">間 — Ma (negative space)</div>
+        <div class="pillar-body">What is left out defines what remains. Every work is as much about the empty paper as the mark upon it.</div>
+      </div>
+      <div>
+        <div class="pillar-title">侘寂 — Wabi-sabi</div>
+        <div class="pillar-body">The beauty of imperfection and impermanence. Ink brushed on washi cannot be undone — and that is its truth.</div>
+      </div>
+      <div>
+        <div class="pillar-title">一期一会 — Ichi-go ichi-e</div>
+        <div class="pillar-body">Each encounter — with a subject, a commission, a blank sheet — is singular and unrepeatable. It deserves full presence.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Commission form -->
+<section class="commission-cta" id="commission">
+  <div>
+    <div class="section-label">Commission</div>
+    <h2>Begin something <em>lasting</em></h2>
+    <p>Portrait commissions, custom originals, and bespoke print editions. Prices from £180 for prints to £650+ for original ink works, depending on size and complexity.</p>
+    <p style="font-size:13px;color:var(--muted)">Current lead time: 4–6 weeks · Worldwide shipping available</p>
+  </div>
+  <div>
+    <form class="commission-form" onsubmit="return false">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Your name</label>
+          <input class="form-input" type="text" placeholder="Full name">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input class="form-input" type="email" placeholder="you@email.com">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Type of commission</label>
+        <select class="form-select">
+          <option value="">Select a type...</option>
+          <option>Portrait — person</option>
+          <option>Portrait — animal</option>
+          <option>Portrait — place / landscape</option>
+          <option>Original ink work</option>
+          <option>Custom print edition</option>
+          <option>Other / not sure yet</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Tell me about the piece</label>
+        <textarea class="form-textarea" placeholder="Subject, occasion, size, any style references — as much or as little as you have so far..."></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Approximate budget</label>
+        <select class="form-select">
+          <option value="">Select a range...</option>
+          <option>£100 – £250</option>
+          <option>£250 – £500</option>
+          <option>£500 – £1,000</option>
+          <option>£1,000+</option>
+          <option>Flexible — guide me</option>
+        </select>
+      </div>
+      <button class="form-submit" type="submit">Send enquiry →</button>
+      <div class="form-note">Jeremy responds to all enquiries within 48 hours. No commitment required at this stage.</div>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-name">Jeremy Creasey</div>
+      <div class="footer-tagline">Fine art prints, original ink works and bespoke portrait commissions</div>
+      <div class="footer-seal">墨 · 版 · 肖</div>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="#">Original works</a></li>
+        <li><a href="#">Fine art prints</a></li>
+        <li><a href="#">Portrait commissions</a></li>
+        <li><a href="#">Gift certificates</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Info</h4>
+      <ul>
+        <li><a href="#">About Jeremy</a></li>
+        <li><a href="#">The practice</a></li>
+        <li><a href="#">Shipping &amp; returns</a></li>
+        <li><a href="#">Care &amp; framing</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Newsletter</a></li>
+        <li><a href="#">contact@jeremycreasey.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Jeremy Creasey. All rights reserved.</div>
+    <div class="footer-jp">芸術家の魂</div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const target=document.querySelector(a.getAttribute('href'));
+    if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth',block:'start'})}
+  });
+});
+</script>
+</body>
+</html>
